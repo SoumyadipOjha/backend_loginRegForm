@@ -8,10 +8,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb://localhost:27017/usersdetails", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://soumyadipojha635:vUkbHyzZOtnFIHSV@userdetails.cny8wml.mongodb.net/?retryWrites=true&w=majority&appName=userDetails",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 var db = mongoose.connection;
 db.on("error", (err) => console.log("Error in Connecting to Database: " + err));
@@ -45,7 +48,8 @@ app.post("/sign_up", (req, res) => {
         throw err;
       }
       console.log("Record Inserted Successfully");
-      res.redirect("/"); // Redirect back to index.html
+      // Redirect to "/received" endpoint after successful submission
+      res.redirect("/received");
     });
   } catch (e) {
     console.error(e);
@@ -53,8 +57,9 @@ app.post("/sign_up", (req, res) => {
   }
 });
 
-app.get("/loginReg", (req, res) => {
-  const filePath = path.join(__dirname, "loginReg.html");
+// Serve the received.html file
+app.get("/received", (req, res) => {
+  const filePath = path.join(__dirname, "received.html");
   res.sendFile(filePath);
 });
 

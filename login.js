@@ -2,14 +2,15 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var path = require("path");
-
+var dotenv = require("dotenv");
 const app = express();
-
+dotenv.config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(
-  "mongodb+srv://soumyadipojha635:vUkbHyzZOtnFIHSV@userdetails.cny8wml.mongodb.net/?retryWrites=true&w=majority&appName=userDetails",
+  process.env.MONGODB_CONNECT_URI,
+  // "mongodb+srv://soumyadipojha635:vUkbHyzZOtnFIHSV@userdetails.cny8wml.mongodb.net/?retryWrites=true&w=majority&appName=userDetails",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -48,8 +49,7 @@ app.post("/sign_up", (req, res) => {
         throw err;
       }
       console.log("Record Inserted Successfully");
-      // Redirect to "/received" endpoint after successful submission
-      res.redirect("/received");
+      res.redirect("/received"); // Redirect back to index.html
     });
   } catch (e) {
     console.error(e);
@@ -57,7 +57,6 @@ app.post("/sign_up", (req, res) => {
   }
 });
 
-// Serve the received.html file
 app.get("/received", (req, res) => {
   const filePath = path.join(__dirname, "received.html");
   res.sendFile(filePath);

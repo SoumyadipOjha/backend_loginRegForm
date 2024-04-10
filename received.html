@@ -1,12 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Received</title>
+  <title>Thank You Page</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to right, #22c1c3, #fdbb2d);
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .message {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .animated-text {
+      overflow: hidden;
+      white-space: nowrap;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+
+    .animated-text span {
+      display: inline-block;
+      animation: showup 0.5s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes showup {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .stay-motivated {
+      font-size: 24px;
+      font-weight: 500;
+      color: #333;
+      margin-top: 30px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .message {
+        font-size: 28px;
+      }
+
+      .stay-motivated {
+        font-size: 20px;
+      }
+    }
+
+    /* Custom Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+  </style>
 </head>
+
 <body>
-  <h1>Received Confirmation</h1>
-  <p>Your form has been submitted successfully!</p>
+  <div class="container">
+    <p style="font-size: 3rem;">Thank you.</p><br><p style="font-size: 1.5rem;">your response hasbeen received .we will get in touch as soon as possible.😊</p><br>
+    <p>Stay Motivated🔥🔥</p>
+     
+    </div>
+  </div>
 </body>
+
 </html>
